@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.board.mappers.reply">
+<!--  댓글 조회  -->
+<select id="readReply" resultType="com.mat.mvc.dao.ReplyVO"> 
+select rno, content, writer, regDate from tbl_reply where bno = #{bno} 
+</select>
+
+<insert id="writeReply" parameterType="com.mat.mvc.dao.ReplyVO">
+insert into tbl_reply(bno,content,writer) values(#{bno},#{content},#{writer})
+</insert>
+
+<delete id="deleteReply">
+delete from tbl_reply where bno=#{bno} and rno=#{rno}
+</delete>
+
+<update id="updateReply">
+update tbl_reply set content=#{content} where bno=#{bno} and rno=#{rno}
+</update>
+
+
+
+</mapper>
